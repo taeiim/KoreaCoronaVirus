@@ -4,4 +4,19 @@
     <string name="tab_map">코로나맵</string>
     <string name="tab_info">안전수칙</string>
     <string name="tab_web">질병관리본부</string>
+
+    <string name="fail_get_statistics">데이터를 불러올 수 없습니다.</string>
+
+    <string name="main_subTitle">신종 코로나 바이러스, 우한 폐렴</string>
+    <string name="statistics_subTitle1">국내 확진환자</string>
+    <string name="statistics_subTitle2">국내 사망자</string>
+    <string name="statistics_subTitle3">세계 확진환자</string>
+    <string name="statistics_subTitle4">세계 사망자</string>
+    <string name="statistics_subTitle5">발생 국가</string>
+    <string name="statistics_subTitle6">조사 대상 유증상자 (국내)</string>
+    <string name="statistics_subTitle7">격리 해제</string>
+    <string name="statistics_subTitle8">검사중</string>
+
+    <string name="counters_person">명</string>
+    <string name="counters_country">개국</string>
 </resources>

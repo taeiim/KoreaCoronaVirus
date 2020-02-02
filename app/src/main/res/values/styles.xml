@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -19,6 +19,35 @@
 
     <style name="NotoSansEditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
         <item name="android:fontFamily">@font/font_josunilbo</item>
+    </style>
+
+
+    <style name="CountBlackBigTextViewStyle" parent="NotoSansTextViewStyle">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="CountRedBigTextViewStyle" parent="NotoSansTextViewStyle">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/darkRed</item>
+    </style>
+
+    <style name="smallTextViewStyle" parent="NotoSansTextViewStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="smallTextViewStyle.CountBlackSmallTextViewStyle">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="smallTextViewStyle.CountRedSmallTextViewStyle">
+        <item name="android:textColor">@color/darkRed</item>
+    </style>
+
+    <style name="serveSmallTextViewStyle" parent="NotoSansTextViewStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/graySmallText</item>
+        <item name="android:layout_marginLeft">4dp</item>
     </style>
 
 </resources>
