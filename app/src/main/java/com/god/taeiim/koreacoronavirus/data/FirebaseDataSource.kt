@@ -11,6 +11,11 @@ interface FirebaseDataSource {
             fail: (t: Throwable) -> Unit
         )
 
+        fun getWebViewURL(
+            success: (results: String) -> Unit,
+            fail: (t: Throwable) -> Unit
+        )
+
     }
 
 }

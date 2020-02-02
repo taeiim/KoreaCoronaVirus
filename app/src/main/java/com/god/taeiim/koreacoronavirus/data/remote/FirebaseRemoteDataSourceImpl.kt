@@ -6,15 +6,16 @@ import com.google.firebase.database.*
 
 class FirebaseRemoteDataSourceImpl : FirebaseDataSource.RemoteDataSource {
 
+    val database: DatabaseReference by lazy { FirebaseDatabase.getInstance().reference }
+
     override fun getStatisticsData(
         success: (results: CoronaStatistics) -> Unit,
         fail: (t: Throwable) -> Unit
     ) {
 
-        val database = FirebaseDatabase.getInstance().reference
         val myRef: DatabaseReference = database.root.child("corona-statistics").child("statistics")
 
-        val postListener = object : ValueEventListener {
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val coronaStatistics: CoronaStatistics? =
                     dataSnapshot.getValue(CoronaStatistics::class.java)
@@ -24,10 +25,30 @@ class FirebaseRemoteDataSourceImpl : FirebaseDataSource.RemoteDataSource {
             override fun onCancelled(databaseError: DatabaseError) {
                 fail(Throwable())
             }
-        }
-        myRef.addListenerForSingleValueEvent(postListener)
+        })
 
     }
+
+    override fun getWebViewURL(
+        success: (results: String) -> Unit,
+        fail: (t: Throwable) -> Unit
+    ) {
+
+        val myRef: DatabaseReference = database.root.child("webViewURL")
+
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val webViewURL: String? = dataSnapshot.value as String
+                webViewURL?.let(success) ?: fail(Throwable("null"))
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                fail(Throwable())
+            }
+        })
+
+    }
+
 
     companion object {
         private var instance: FirebaseDataSource.RemoteDataSource? = null
