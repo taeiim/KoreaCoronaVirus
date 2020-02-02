@@ -51,4 +51,10 @@ dependencies {
 
     // ViewModel, LiveData
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:$firebase_core_version"
+    implementation "com.google.firebase:firebase-database:$firebase_database_version"
 }
+
+apply plugin: 'com.google.gms.google-services'

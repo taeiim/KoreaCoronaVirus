@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "556169655506",
+    "firebase_url": "https://koreacoronavirus.firebaseio.com",
+    "project_id": "koreacoronavirus",
+    "storage_bucket": "koreacoronavirus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:556169655506:android:5371c6f0d930469845a90b",
+        "android_client_info": {
+          "package_name": "com.god.taeiim.koreacoronavirus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "556169655506-plbt79oqnt7cvcv70cphkrok52ahek23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHvpK7YjTjxyI4NL24RXTEHjdcIpkybvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "556169655506-plbt79oqnt7cvcv70cphkrok52ahek23.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

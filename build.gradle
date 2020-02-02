@@ -26,6 +26,10 @@ buildscript {
 
         // LifeCycle (ViewModel)
         lifecycle_version = '2.2.0'
+
+        // firebase
+        firebase_database_version = '19.2.1'
+        firebase_core_version = '17.2.2'
     }
 
     repositories {
@@ -36,6 +40,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.3'
     }
 }
 
