@@ -1,7 +1,8 @@
-package com.god.taeiim.koreacoronavirus
+package com.god.taeiim.koreacoronavirus.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.god.taeiim.koreacoronavirus.R
 
 class MainActivity : AppCompatActivity() {
 
