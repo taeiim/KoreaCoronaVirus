@@ -13,6 +13,13 @@ class FirebaseRepositoryImpl private constructor(
         firebaseRemote.getStatisticsData(success, fail)
     }
 
+    override fun getWebViewURL(
+        success: (results: String) -> Unit,
+        fail: (t: Throwable) -> Unit
+    ) {
+        firebaseRemote.getWebViewURL(success, fail)
+    }
+
     companion object {
         private var INSTANCE: FirebaseRepositoryImpl? = null
 
