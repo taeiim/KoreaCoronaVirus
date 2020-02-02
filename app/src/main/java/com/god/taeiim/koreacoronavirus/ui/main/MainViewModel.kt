@@ -1,4 +1,10 @@
 package com.god.taeiim.koreacoronavirus.ui.main
 
-class MainViewModel {
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+
+class MainViewModel : ViewModel() {
+
+    val tabSelectedItem = MutableLiveData<Int>()
+
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/statisticsNavigation"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/tab_statistics" />
+    <item
+        android:id="@+id/routeMapNavigation"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/tab_map" />
+    <item
+        android:id="@+id/safetyInfoNavigation"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/tab_info" />
+    <item
+        android:id="@+id/webViewNavigation"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/tab_web" />
+</menu>

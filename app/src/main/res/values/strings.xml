@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">KoreaCoronaVirus</string>
+    <string name="tab_statistics">통계</string>
+    <string name="tab_map">코로나맵</string>
+    <string name="tab_info">안전수칙</string>
+    <string name="tab_web">질병관리본부</string>
 </resources>
