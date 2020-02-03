@@ -11,6 +11,11 @@ interface FirebaseDataSource {
             fail: (t: Throwable) -> Unit
         )
 
+        fun getHotSearchKeyword(
+            success: (keywords: ArrayList<String>) -> Unit,
+            fail: (t: Throwable) -> Unit
+        )
+
         fun getWebViewURL(
             success: (results: String) -> Unit,
             fail: (t: Throwable) -> Unit
