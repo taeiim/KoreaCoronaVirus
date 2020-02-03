@@ -58,6 +58,10 @@ dependencies {
 
     // AdMob
     implementation "com.google.android.gms:play-services-ads:$admob_version"
+
+
+    implementation "com.google.android.gms:play-services-maps:$maps_version"
+    implementation "com.google.android.gms:play-services-location:$maps_version"
 }
 
 apply plugin: 'com.google.gms.google-services'

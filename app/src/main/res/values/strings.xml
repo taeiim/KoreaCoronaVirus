@@ -21,6 +21,7 @@
     <string name="counters_person">명</string>
     <string name="counters_country">개국</string>
 
+    <string name="api_key">AIzaSyDHvpK7YjTjxyI4NL24RXTEHjdcIpkybvk</string>
     <string name="admob_app_id">ca-app-pub-5497763693278680~1827766346</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="banner_ad_unit_id_for_test">ca-app-pub-5497763693278680/9131541296</string>

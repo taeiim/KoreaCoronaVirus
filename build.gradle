@@ -31,6 +31,9 @@ buildscript {
         firebase_database_version = '19.2.1'
         firebase_core_version = '17.2.2'
 
+        // google maps
+        maps_version = '17.0.0'
+
         // AdMob
         admob_version = '18.3.0'
     }
