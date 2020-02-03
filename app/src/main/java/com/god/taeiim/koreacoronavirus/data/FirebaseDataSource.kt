@@ -1,5 +1,6 @@
 package com.god.taeiim.koreacoronavirus.data
 
+import com.god.taeiim.koreacoronavirus.api.model.Confirmations
 import com.god.taeiim.koreacoronavirus.api.model.CoronaStatistics
 
 interface FirebaseDataSource {
@@ -8,6 +9,11 @@ interface FirebaseDataSource {
 
         fun getStatisticsData(
             success: (results: CoronaStatistics) -> Unit,
+            fail: (t: Throwable) -> Unit
+        )
+
+        fun getConfirmationsInfo(
+            success: (results: Confirmations) -> Unit,
             fail: (t: Throwable) -> Unit
         )
 

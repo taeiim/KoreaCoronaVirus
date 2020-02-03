@@ -1,5 +1,6 @@
 package com.god.taeiim.koreacoronavirus.data.remote
 
+import com.god.taeiim.koreacoronavirus.api.model.Confirmations
 import com.god.taeiim.koreacoronavirus.api.model.CoronaStatistics
 import com.god.taeiim.koreacoronavirus.data.FirebaseDataSource
 import com.google.firebase.database.*
@@ -20,6 +21,27 @@ object FirebaseRemoteDataSourceImpl : FirebaseDataSource.RemoteDataSource {
                 val coronaStatistics: CoronaStatistics? =
                     dataSnapshot.getValue(CoronaStatistics::class.java)
                 coronaStatistics?.let(success) ?: fail(Throwable("null"))
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                fail(Throwable())
+            }
+        })
+
+    }
+
+    override fun getConfirmationsInfo(
+        success: (results: Confirmations) -> Unit,
+        fail: (t: Throwable) -> Unit
+    ) {
+
+        val myRef: DatabaseReference = database.root.child("confirmations-info")
+
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val confirmations =
+                    Confirmations(dataSnapshot.value as List<Confirmations.ConirmationInfo>)
+                confirmations?.let(success)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
