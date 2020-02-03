@@ -30,6 +30,9 @@ buildscript {
         // firebase
         firebase_database_version = '19.2.1'
         firebase_core_version = '17.2.2'
+
+        // AdMob
+        admob_version = '18.3.0'
     }
 
     repositories {
