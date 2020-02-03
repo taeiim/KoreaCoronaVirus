@@ -20,7 +20,7 @@ class DiseaseControlWebViewFragment :
         ViewModelProvider(this@DiseaseControlWebViewFragment, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return DiseaseControlWebViewViewModel(
-                    FirebaseRepositoryImpl.getInstance(FirebaseRemoteDataSourceImpl.getInstance())
+                    FirebaseRepositoryImpl.getInstance(FirebaseRemoteDataSourceImpl)
                 ) as T
             }
         })[DiseaseControlWebViewViewModel::class.java]

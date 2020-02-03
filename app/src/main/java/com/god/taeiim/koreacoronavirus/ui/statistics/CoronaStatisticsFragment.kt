@@ -19,7 +19,7 @@ class CoronaStatisticsFragment :
         ViewModelProvider(this@CoronaStatisticsFragment, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return CoronaStatisticsViewModel(
-                    FirebaseRepositoryImpl.getInstance(FirebaseRemoteDataSourceImpl.getInstance())
+                    FirebaseRepositoryImpl.getInstance(FirebaseRemoteDataSourceImpl)
                 ) as T
             }
         })[CoronaStatisticsViewModel::class.java]
@@ -40,7 +40,7 @@ class CoronaStatisticsFragment :
     }
 
     private fun failToGetData() {
-        Toast.makeText(context, getString(R.string.fail_get_statistics), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, getString(R.string.fail_get_firebase), Toast.LENGTH_SHORT).show()
     }
 
 }
