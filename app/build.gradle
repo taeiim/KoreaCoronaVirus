@@ -55,6 +55,9 @@ dependencies {
     // Firebase
     implementation "com.google.firebase:firebase-core:$firebase_core_version"
     implementation "com.google.firebase:firebase-database:$firebase_database_version"
+
+    // AdMob
+    implementation "com.google.android.gms:play-services-ads:$admob_version"
 }
 
 apply plugin: 'com.google.gms.google-services'
