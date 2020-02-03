@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.god.taeiim.koreacoronavirus.R
 import com.god.taeiim.koreacoronavirus.data.FirebaseRepositoryImpl
 import com.god.taeiim.koreacoronavirus.data.remote.FirebaseRemoteDataSourceImpl
+import com.god.taeiim.koreacoronavirus.databinding.FragmentRouteMapBinding
+import com.god.taeiim.myapplication.base.BaseFragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -20,7 +22,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 
 
-class RouteMapFragment : Fragment(), OnMapReadyCallback {
+class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment_route_map),
+    OnMapReadyCallback {
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -34,27 +37,15 @@ class RouteMapFragment : Fragment(), OnMapReadyCallback {
         })[RouteMapViewModel::class.java]
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_route_map, container, false)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context!!)
-
-        return view
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        vm.setObserves()
-        vm.getConfirmationsData()
-
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context!!)
 
+        vm.setObserves()
+        vm.getConfirmationsData()
 
     }
 
@@ -66,6 +57,15 @@ class RouteMapFragment : Fragment(), OnMapReadyCallback {
         Toast.makeText(context, getString(R.string.fail_get_firebase), Toast.LENGTH_SHORT).show()
     }
 
+    private fun moveMapBasicLatLngZoom() {
+        map.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                LatLng(36.585745, 127.887487),
+                map.minZoomLevel
+            )
+        )
+    }
+
     override fun onMapReady(googleMap: GoogleMap?) {
         if (googleMap != null) {
             map = googleMap
@@ -74,13 +74,8 @@ class RouteMapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun initGoogleMaps() {
-        val zoomLevel = 8.0f
-        map.setMinZoomPreference(zoomLevel)
-        map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(
-                LatLng(36.585745, 127.887487),
-                zoomLevel
-            )
-        )
+        map.setMinZoomPreference(8.0f)
+        moveMapBasicLatLngZoom()
+        binding.zoomResetBtn.setOnClickListener { moveMapBasicLatLngZoom() }
     }
 }
