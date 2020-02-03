@@ -13,6 +13,13 @@ class FirebaseRepositoryImpl private constructor(
         firebaseRemote.getStatisticsData(success, fail)
     }
 
+    override fun getHotSearchKeyword(
+        success: (keywords: ArrayList<String>) -> Unit,
+        fail: (t: Throwable) -> Unit
+    ) {
+        firebaseRemote.getHotSearchKeyword(success, fail)
+    }
+
     override fun getWebViewURL(
         success: (results: String) -> Unit,
         fail: (t: Throwable) -> Unit
