@@ -1,5 +1,6 @@
 package com.god.taeiim.koreacoronavirus.data
 
+import com.god.taeiim.koreacoronavirus.api.model.Confirmations
 import com.god.taeiim.koreacoronavirus.api.model.CoronaStatistics
 
 class FirebaseRepositoryImpl private constructor(
@@ -11,6 +12,13 @@ class FirebaseRepositoryImpl private constructor(
         fail: (t: Throwable) -> Unit
     ) {
         firebaseRemote.getStatisticsData(success, fail)
+    }
+
+    override fun getConfirmationsInfo(
+        success: (results: Confirmations) -> Unit,
+        fail: (t: Throwable) -> Unit
+    ) {
+        firebaseRemote.getConfirmationsInfo(success, fail)
     }
 
     override fun getHotSearchKeyword(
