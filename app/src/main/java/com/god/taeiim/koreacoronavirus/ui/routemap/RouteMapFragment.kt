@@ -140,7 +140,7 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
     private fun moveMapBasicLatLngZoom() {
         map.animateCamera(
             CameraUpdateFactory.newLatLngZoom(
-                LatLng(36.585745, 127.887487),
+                LatLng(37.216689, 127.254584),
                 map.minZoomLevel
             )
         )
