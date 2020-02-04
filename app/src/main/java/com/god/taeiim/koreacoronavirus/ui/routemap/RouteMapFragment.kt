@@ -27,6 +27,8 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
     val paths = ArrayList<Polyline>()
     val markersInMap = ArrayList<MarkersInMap>()
 
+    lateinit var confirmationAdapter: ConfirmationRecyclerAdapter<Confirmations.ConirmationInfo, ItemConfirmationBinding>
+
     private val vm: RouteMapViewModel by lazy {
         ViewModelProvider(this@RouteMapFragment, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -39,6 +41,9 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        confirmationAdapter = ConfirmationRecyclerAdapter(R.layout.item_confirmation, BR.item, vm)
+        binding.confirmationRecyclerView.adapter = confirmationAdapter
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)

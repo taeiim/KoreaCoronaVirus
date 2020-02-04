@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.god.taeiim.koreacoronavirus.api.model.Confirmations.ConirmationInfo" />
+
+        <variable
+            name="vm"
+            type="com.god.taeiim.koreacoronavirus.ui.routemap.RouteMapViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="12dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@{item.isSelected() ? @drawable/bg_navy_radius_2dp : @drawable/bg_white_gray_stroke}"
+            android:onClick="@{()->vm.selectSearchConfirmation(item)}"
+            android:paddingLeft="14dp"
+            android:paddingTop="8dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="8dp"
+            android:text="@{item.showId}"
+            android:textColor="@{item.isSelected() ? @color/white : @color/darkNavy}"
+            android:textSize="14sp"
+            tools:text="# 1번째" />
+
+    </LinearLayout>
+</layout>
