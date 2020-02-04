@@ -27,10 +27,29 @@
             android:visibility="@{vm.errorFailGetURL ? View.VISIBLE : View.GONE}"
             tools:visibility="gone" />
 
-        <WebView
-            android:id="@+id/webView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/goTopBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_white_gray_radius_2dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_up"
+                android:text="초기화" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 </layout>

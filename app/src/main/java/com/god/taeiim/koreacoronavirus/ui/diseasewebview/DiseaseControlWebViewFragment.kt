@@ -51,6 +51,10 @@ class DiseaseControlWebViewFragment :
             }
             webView.loadUrl(vm?.webViewURL?.value)
         }
+
+        with(binding) {
+            goTopBtn.setOnClickListener { webView.scrollTo(0, 0) }
+        }
     }
 
 }
