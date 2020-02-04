@@ -12,13 +12,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="28dp"
+            android:text="최신 핫토픽 기사"
+            android:textColor="@color/darkNavy"
+            android:textSize="20sp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/keywordRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:clipToPadding="false"
             android:orientation="horizontal"
-            android:paddingLeft="16dp"
+            android:paddingLeft="28dp"
             android:paddingRight="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_keyword" />
