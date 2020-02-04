@@ -13,5 +13,6 @@
 
     <color name="darkRed">#C00000</color>
     <color name="darkBlue">#003B8A</color>
+    <color name="linkBlue">#0044CC</color>
     <color name="darkNavy">#212545</color>
 </resources>
