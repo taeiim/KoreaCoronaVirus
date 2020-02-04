@@ -2,8 +2,8 @@
     <string name="app_name">한국 코로나바이러스 종합</string>
     <string name="tab_statistics">통계</string>
     <string name="tab_map">코로나맵</string>
-    <string name="tab_info">안전수칙</string>
-    <string name="tab_web">질병관리본부</string>
+    <string name="tab_info">관련기사</string>
+    <string name="tab_web">선별진료소</string>
 
     <string name="fail_get_firebase">데이터를 불러올 수 없습니다.</string>
     <string name="fail_network">네트워크 연결을 확인해주세요.</string>
