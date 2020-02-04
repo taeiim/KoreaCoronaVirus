@@ -35,6 +35,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private var tabClickCnt = 0
     private var lastTimeBackPressed: Long = -1500
 
+    val statisticsFragment = CoronaStatisticsFragment()
+    val routeMapFragment = RouteMapFragment()
+    val newsFragment = NewsFragment()
+    val webViewFragment = DiseaseControlWebViewFragment()
+    var activeFragment: Fragment = statisticsFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,11 +49,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         setUpPublisherAd()
 
         with(binding) {
+            initTabFragment()
             bottomNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
             loadFragment(vm.tabSelectedItem.value ?: bottomNavigation.selectedItemId)
         }
 
     }
+
 
     private fun bannerAdmob() {
         binding.adView.loadAd(AdRequest.Builder().build())
@@ -108,6 +116,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
+
+    private fun initTabFragment() {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainer, statisticsFragment, "1")
+            .hide(statisticsFragment).commit()
+        supportFragmentManager
+            .beginTransaction().add(R.id.fragmentContainer, routeMapFragment, "2")
+            .hide(routeMapFragment).commit()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainer, newsFragment, "3")
+            .hide(newsFragment).commit()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainer, webViewFragment, "4")
+            .hide(webViewFragment).commit()
+    }
+
     private val onNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             loadFragment(item.itemId)
@@ -119,12 +143,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         supportFragmentManager.findFragmentByTag(
             itemId.toString()
         ) ?: when (itemId) {
-            R.id.statisticsNavigation -> CoronaStatisticsFragment()
-            R.id.routeMapNavigation -> RouteMapFragment()
-            R.id.safetyInfoNavigation -> NewsFragment()
-            R.id.webViewNavigation -> DiseaseControlWebViewFragment()
+            R.id.statisticsNavigation -> statisticsFragment
+            R.id.routeMapNavigation -> routeMapFragment
+            R.id.safetyInfoNavigation -> newsFragment
+            R.id.webViewNavigation -> webViewFragment
             else -> null
-        }?.let { replaceFragment(it) }
+        }?.let { showFragment(it) }
 
         tabClickCnt++
         if (tabClickCnt == SHOW_AD_TAB_CLICK_MAX_CNT) {
@@ -133,11 +157,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragmentContainer, fragment, fragment.tag)
-            .commit()
+    private fun showFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit()
+        activeFragment = fragment
+
     }
 
     override fun onBackPressed() {
