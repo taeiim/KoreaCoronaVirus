@@ -1,6 +1,7 @@
 package com.god.taeiim.koreacoronavirus.ui.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -32,7 +33,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var mPublisherInterstitialAd: PublisherInterstitialAd
     private var tabClickCnt = 0
-
+    private var lastTimeBackPressed: Long = -1500
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -138,4 +139,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             .replace(R.id.fragmentContainer, fragment, fragment.tag)
             .commit()
     }
+
+    override fun onBackPressed() {
+        if (System.currentTimeMillis() - lastTimeBackPressed <= 1500)
+            finish()
+        lastTimeBackPressed = System.currentTimeMillis()
+        Toast.makeText(this, "이전 버튼을 한 번 더 누르면 종료됩니다", Toast.LENGTH_SHORT).show()
+
+    }
+
 }
