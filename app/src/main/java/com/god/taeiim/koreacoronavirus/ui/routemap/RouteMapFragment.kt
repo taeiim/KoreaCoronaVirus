@@ -1,9 +1,9 @@
 package com.god.taeiim.koreacoronavirus.ui.routemap
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -75,14 +75,35 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
     }
 
     private fun drawAllPolyLine() {
-        val colors =
-            arrayOf(Color.CYAN, Color.MAGENTA, Color.GREEN, Color.RED, Color.YELLOW, Color.DKGRAY)
+        var colors = arrayOf(
+            R.color.line1,
+            R.color.line2,
+            R.color.line3,
+            R.color.line4,
+            R.color.line5,
+            R.color.line6,
+            R.color.line7,
+            R.color.line8,
+            R.color.line9,
+            R.color.line10,
+            R.color.line11,
+            R.color.line12,
+            R.color.line13,
+            R.color.line14,
+            R.color.line15,
+            R.color.line16,
+            R.color.line17,
+            R.color.line18,
+            R.color.line19,
+            R.color.line20
+        ).map { ContextCompat.getColor(context ?: return, it) }
+
         for ((index, markers) in vm.confirmations.value?.confirmations!!.map { it.marker }.withIndex()) {
             val polylineOptions = PolylineOptions()
             for (marker in markers ?: return) {
                 val latLng = LatLng(marker.latitude!!.toDouble(), marker.longitude!!.toDouble())
                 polylineOptions.add(latLng)
-                polylineOptions.color(colors.get(index))
+                polylineOptions.color(colors.get(index % colors.size))
 
                 val markerOptions =
                     MarkerOptions().position(latLng).title("${marker.date} ${marker.name}")
@@ -92,6 +113,7 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
             val polyLine = map.addPolyline(polylineOptions)
             polyLine.isClickable = true
             polyLine.tag = "${index + 1}번째 확진자"
+            polyLine.width = 10f
             paths.add(polyLine)
         }
 
