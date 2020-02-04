@@ -13,7 +13,6 @@ import com.god.taeiim.koreacoronavirus.ui.news.NewsFragment
 import com.god.taeiim.koreacoronavirus.ui.statistics.CoronaStatisticsFragment
 import com.god.taeiim.myapplication.base.BaseActivity
 import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest
 import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd
@@ -45,7 +44,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
 
         MobileAds.initialize(this)
-        bannerAdmob()
         setUpPublisherAd()
 
         with(binding) {
@@ -54,35 +52,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             loadFragment(vm.tabSelectedItem.value ?: bottomNavigation.selectedItemId)
         }
 
-    }
-
-
-    private fun bannerAdmob() {
-        binding.adView.loadAd(AdRequest.Builder().build())
-
-        binding.adView.adListener = object : AdListener() {
-            override fun onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-
-            override fun onAdFailedToLoad(errorCode: Int) {
-                // Code to be executed when an ad request fails.
-            }
-
-            override fun onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-
-            override fun onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-            }
-
-            override fun onAdClosed() {
-                // Code to be executed when the user is about to return
-                // to the app after tapping on an ad.
-            }
-        }
     }
 
     private fun setUpPublisherAd() {
