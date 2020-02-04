@@ -4,9 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.god.taeiim.myapplication.extensions.fromHtml
+import com.god.taeiim.myapplication.extensions.linkIntent
 import java.text.DecimalFormat
 
 @BindingAdapter("textInt")
@@ -24,12 +24,6 @@ fun TextView.setTextHtml(text: String?) {
 @BindingAdapter("intentLinkOnClick")
 fun View.intentLinkOnClick(link: String?) {
     setOnClickListener {
-        link?.let {
-            ContextCompat.startActivity(
-                context,
-                Intent(Intent.ACTION_VIEW, Uri.parse(it)),
-                null
-            )
-        }
+        link?.linkIntent(context)
     }
 }

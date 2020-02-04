@@ -1,7 +1,11 @@
 package com.god.taeiim.myapplication.extensions
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.text.Html
+import androidx.core.content.ContextCompat
 
 
 fun String?.fromHtml() =
@@ -12,3 +16,10 @@ fun String?.fromHtml() =
             Html.fromHtml(this)
         }
     } ?: ""
+
+fun String?.linkIntent(context: Context) =
+    ContextCompat.startActivity(
+        context,
+        Intent(Intent.ACTION_VIEW, Uri.parse(this)),
+        null
+    )
