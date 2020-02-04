@@ -12,8 +12,8 @@ class RouteMapViewModel(
 
     private val _confirmations = MutableLiveData<Confirmations>()
     private val _errorFailGetConfirmationsData = MutableLiveData<Throwable>()
-    private val confirmations: LiveData<Confirmations> get() = _confirmations
-    private val errorFailGetConfirmationsData: LiveData<Throwable> get() = _errorFailGetConfirmationsData
+    val confirmations: LiveData<Confirmations> get() = _confirmations
+    val errorFailGetConfirmationsData: LiveData<Throwable> get() = _errorFailGetConfirmationsData
 
 
     fun getConfirmationsData() {
