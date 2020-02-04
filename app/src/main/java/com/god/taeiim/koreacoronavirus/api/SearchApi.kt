@@ -8,6 +8,6 @@ import retrofit2.http.Query
 interface SearchApi {
 
     @GET("search/news.json")
-    fun searchContents(@Query("query") query: String): Call<SearchResultNews>
+    fun searchContents(@Query("query") query: String, @Query("display") display: Int): Call<SearchResultNews>
 
 }

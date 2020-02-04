@@ -14,7 +14,7 @@ object NaverRemoteDataSourceImpl : NaverDataSource.RemoteDataSource {
         success: (results: SearchResultNews) -> Unit,
         fail: (t: Throwable) -> Unit
     ) {
-        provideAuthApi().searchContents(query)
+        provideAuthApi().searchContents(query, 100)
             .enqueue(object : Callback<SearchResultNews> {
                 override fun onResponse(
                     call: Call<SearchResultNews>,
