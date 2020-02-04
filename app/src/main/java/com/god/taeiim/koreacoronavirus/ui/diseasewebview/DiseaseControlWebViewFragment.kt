@@ -34,6 +34,7 @@ class DiseaseControlWebViewFragment :
 
         vm.setObserves()
         vm.getWebViewURL()
+        webViewSetting()
 
     }
 
@@ -50,6 +51,12 @@ class DiseaseControlWebViewFragment :
                 }
             }
             webView.loadUrl(vm?.webViewURL?.value)
+        }
+    }
+
+    private fun webViewSetting() {
+        with(binding.webView.settings) {
+            javaScriptEnabled = true
         }
 
         with(binding) {
