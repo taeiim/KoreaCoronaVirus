@@ -7,11 +7,14 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.god.taeiim.koreacoronavirus.BR
 import com.god.taeiim.koreacoronavirus.R
+import com.god.taeiim.koreacoronavirus.api.model.Confirmations
 import com.god.taeiim.koreacoronavirus.api.model.MarkersInMap
 import com.god.taeiim.koreacoronavirus.data.FirebaseRepositoryImpl
 import com.god.taeiim.koreacoronavirus.data.remote.FirebaseRemoteDataSourceImpl
 import com.god.taeiim.koreacoronavirus.databinding.FragmentRouteMapBinding
+import com.god.taeiim.koreacoronavirus.databinding.ItemConfirmationBinding
 import com.god.taeiim.myapplication.base.BaseFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -55,7 +58,16 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
 
     private fun RouteMapViewModel.setObserves() {
         errorFailGetConfirmationsData.observe(viewLifecycleOwner, Observer { failToGetData() })
-        confirmations.observe(viewLifecycleOwner, Observer { drawAllPolyLine() })
+        confirmations.observe(viewLifecycleOwner, Observer {
+            drawAllPolyLine()
+        })
+        currentSelectIndex.observe(viewLifecycleOwner, Observer {
+            if (it == -1) setVisibleAllPolyLine() else setVisibleOnePolyLine(it)
+        })
+        confirmationsAddAllOption.observe(viewLifecycleOwner, Observer {
+            updateSearchKeywords(it)
+            it.confirmations.find { it.id == -1 }?.isSelected?.set(true)
+        })
     }
 
     private fun failToGetData() {
@@ -82,6 +94,8 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
             polyLine.tag = "${index + 1}번째 확진자"
             paths.add(polyLine)
         }
+
+        binding.confirmationRecyclerView.visibility = View.VISIBLE
 
     }
 
@@ -122,4 +136,9 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
         moveMapBasicLatLngZoom()
         binding.zoomResetBtn.setOnClickListener { moveMapBasicLatLngZoom() }
     }
+
+    private fun updateSearchKeywords(confirmations: Confirmations) {
+        confirmationAdapter.updateItems(confirmations.confirmations)
+    }
+
 }

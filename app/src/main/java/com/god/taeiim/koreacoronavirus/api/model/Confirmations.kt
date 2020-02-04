@@ -1,9 +1,12 @@
 package com.god.taeiim.koreacoronavirus.api.model
 
+import androidx.databinding.ObservableField
+
 data class Confirmations(
     val confirmations: List<ConirmationInfo>
 ) {
     data class ConirmationInfo(
+        var id: Int? = 0,
         val age: Int? = 0,
         val confirmDate: String? = "",
         val contactPersonCnt: Int? = 0,
@@ -13,8 +16,12 @@ data class Confirmations(
         val isVisitWuhan: Boolean? = true,
         val marker: List<Marker>? = null,
         val memo: String? = "",
-        val nationality: String? = ""
-    )
+        val nationality: String? = "",
+        var isSelected: ObservableField<Boolean> = ObservableField(false)
+    ) {
+        val showId: String
+            get() = id?.let { if (it == -1) "# 전체" else "# ${it + 1}번째" } ?: "1번째"
+    }
 }
 
 data class Marker(
