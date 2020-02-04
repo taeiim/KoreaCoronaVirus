@@ -43,7 +43,7 @@ class CoronaStatisticsViewModel(
             koreaDieCnt.value = it.koreaDieCnt
             koreaIsolationCnt.value = it.koreaIsolationCnt
             koreaSymptomCnt.value = it.koreaSymptomCnt
-            updateTime.value = "(${it.updateTime} 기준, 출처: 질병관리본부)"
+            updateTime.value = it.updateTime
             worldConfirmatorCnt.value = it.worldConfirmatorCnt
             worldDieCnt.value = it.worldDieCnt
             titleMsg.value = it.titleMsg
