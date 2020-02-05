@@ -65,4 +65,8 @@ class CoronaStatisticsFragment :
         Toast.makeText(context, getString(R.string.fail_get_firebase), Toast.LENGTH_SHORT).show()
     }
 
+    override fun onStart() {
+        super.onStart()
+        vm.getStatisticsData()
+    }
 }
