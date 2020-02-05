@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="4dp"
-                android:text="@={vm.titleMsg}"
+                bind:setTextHtml="@{vm.titleMsg}"
                 android:textColor="@color/darkBlue"
                 android:textSize="24sp"
                 tools:text="info" />
