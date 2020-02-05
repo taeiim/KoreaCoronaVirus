@@ -10,6 +10,7 @@
     <color name="graySmallText">#616161</color>
     <color name="gray_f0f0f0">#f0f0f0</color>
     <color name="gray_e0e0e0">#e0e0e0</color>
+    <color name="gray_c0c0c0">#c0c0c0</color>
 
     <color name="darkRed">#C00000</color>
     <color name="darkBlue">#003B8A</color>
