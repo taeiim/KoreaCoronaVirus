@@ -163,4 +163,9 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
         confirmationAdapter.updateItems(confirmations.confirmations)
     }
 
+    override fun onStart() {
+        super.onStart()
+        vm.getConfirmationsData()
+    }
+
 }
