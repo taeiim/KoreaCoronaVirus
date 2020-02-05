@@ -52,7 +52,6 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
         mapFragment.getMapAsync(this)
 
         vm.setObserves()
-        vm.getConfirmationsData()
 
     }
 
@@ -150,6 +149,7 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
         if (googleMap != null) {
             map = googleMap
             initGoogleMaps()
+            vm.getConfirmationsData()
         }
     }
 
