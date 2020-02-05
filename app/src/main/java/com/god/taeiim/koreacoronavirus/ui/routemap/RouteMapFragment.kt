@@ -112,7 +112,7 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
             val polyLine = map.addPolyline(polylineOptions)
             polyLine.isClickable = true
             polyLine.tag = "${index + 1}번째 확진자"
-            polyLine.width = 10f
+            polyLine.width = 7f
             paths.add(polyLine)
         }
 
