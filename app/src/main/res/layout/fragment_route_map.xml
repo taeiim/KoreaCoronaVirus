@@ -16,7 +16,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="코로나 확진 경로" />
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:text="확진자 이동경로 맵"
+            android:textColor="@color/darkNavy"
+            android:textSize="20sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/confirmationRecyclerView"
@@ -24,7 +28,7 @@
             android:layout_height="60dp"
             android:clipToPadding="false"
             android:orientation="horizontal"
-            android:paddingLeft="16dp"
+            android:paddingLeft="28dp"
             android:paddingRight="8dp"
             android:visibility="invisible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
