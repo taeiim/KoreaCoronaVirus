@@ -9,6 +9,9 @@ data class SearchResultNews(
         val description: String?,
         val link: String?,
         val originallink: String?
-    )
+    ) {
+        val date: String
+            get() = pubDate?.substring(0, pubDate.length - 9) ?: ""
+    }
 }
 

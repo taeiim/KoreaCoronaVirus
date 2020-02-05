@@ -42,7 +42,7 @@
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleTv"
-            bind:setTextHtml="@{item.pubDate}"
+            android:text="@{item.date}"
             android:paddingBottom="16dp"
             tools:text="소제목" />
 
