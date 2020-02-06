@@ -1,9 +1,16 @@
 package com.god.taeiim.koreacoronavirus.ui.routemap
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -30,6 +37,9 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
     val paths = ArrayList<Polyline>()
     val markersInMap = ArrayList<MarkersInMap>()
 
+    private lateinit var markerView: View
+    private lateinit var markerIndexTv: TextView
+
     lateinit var confirmationAdapter: ConfirmationRecyclerAdapter<Confirmations.ConirmationInfo, ItemConfirmationBinding>
 
     private val vm: RouteMapViewModel by lazy {
@@ -52,6 +62,7 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
         mapFragment.getMapAsync(this)
 
         vm.setObserves()
+        setCustomMarkerView()
 
     }
 
@@ -104,8 +115,15 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
                 polylineOptions.add(latLng)
                 polylineOptions.color(colors.get(index % colors.size))
 
+                markerIndexTv.text = (index + 1).toString()
+                (markerIndexTv.background as GradientDrawable).run {
+                    //                    setStroke(2, colors.get(index % colors.size))
+                    setColor(ColorUtils.setAlphaComponent(colors.get(index % colors.size), 100))
+                }
+
                 val markerOptions =
                     MarkerOptions().position(latLng).title("${marker.date} ${marker.name}")
+                        .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(markerView)))
                 val marker = map.addMarker(markerOptions)
                 markersInMap.add(MarkersInMap(index, marker))
             }
@@ -119,6 +137,34 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
         binding.confirmationRecyclerView.visibility = View.VISIBLE
 
     }
+
+    private fun setCustomMarkerView() {
+        markerView = activity?.layoutInflater?.inflate(R.layout.marker_num, null) ?: return
+        markerIndexTv = markerView.findViewById<TextView>(R.id.markerTv)
+    }
+
+    private fun createDrawableFromView(view: View): Bitmap {
+        val displayMetrics = DisplayMetrics()
+        activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
+        view.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        view.measure(displayMetrics.widthPixels, displayMetrics.heightPixels)
+        view.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels)
+        view.buildDrawingCache()
+        val bitmap = Bitmap.createBitmap(
+            view.getMeasuredWidth(),
+            view.getMeasuredHeight(),
+            Bitmap.Config.ARGB_8888
+        )
+
+        val canvas = Canvas(bitmap)
+        view.draw(canvas)
+
+        return bitmap
+    }
+
 
     private fun setVisibleOnePolyLine(showLineIndex: Int) {
         setInvisibleAllPolyLine()
