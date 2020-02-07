@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">한국 코로나바이러스 종합</string>
+    <string name="app_name">코로나 발자국</string>
     <string name="tab_statistics">통계</string>
     <string name="tab_map">코로나맵</string>
     <string name="tab_info">관련기사</string>
