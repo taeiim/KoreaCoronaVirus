@@ -1,6 +1,7 @@
 package com.god.taeiim.koreacoronavirus.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -13,12 +14,12 @@ import com.god.taeiim.koreacoronavirus.ui.news.NewsFragment
 import com.god.taeiim.koreacoronavirus.ui.statistics.CoronaStatisticsFragment
 import com.god.taeiim.myapplication.base.BaseActivity
 import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.doubleclick.PublisherAdRequest
-import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-const val SHOW_AD_TAB_CLICK_MAX_CNT = 5
+const val SHOW_AD_TAB_CLICK_MAX_CNT = 6
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
@@ -30,7 +31,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         })[MainViewModel::class.java]
     }
 
-    private lateinit var mPublisherInterstitialAd: PublisherInterstitialAd
+    private lateinit var interstitialAd: InterstitialAd
     private var tabClickCnt = 0
     private var lastTimeBackPressed: Long = -1500
 
@@ -43,7 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        MobileAds.initialize(this)
+        MobileAds.initialize(this) {}
         setUpPublisherAd()
 
         with(binding) {
@@ -55,16 +56,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     private fun setUpPublisherAd() {
-        mPublisherInterstitialAd = PublisherInterstitialAd(this)
-        mPublisherInterstitialAd.adUnitId = "/6499/example/interstitial"
-        mPublisherInterstitialAd.loadAd(PublisherAdRequest.Builder().build())
-        mPublisherInterstitialAd.adListener = object : AdListener() {
+        interstitialAd = InterstitialAd(this)
+        interstitialAd.adUnitId = "ca-app-pub-5497763693278680/1234855506"
+        interstitialAd.loadAd(AdRequest.Builder().build())
+        interstitialAd.adListener = object : AdListener() {
             override fun onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
+                Log.d("TAG", "admob onAdLoaded()")
             }
 
             override fun onAdFailedToLoad(errorCode: Int) {
-                // Code to be executed when an ad request fails.
+                Log.d("TAG", "admob onAdFailedToLoad()" + errorCode)
             }
 
             override fun onAdOpened() {
@@ -80,7 +81,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }
 
             override fun onAdClosed() {
-                mPublisherInterstitialAd.loadAd(PublisherAdRequest.Builder().build())
+                interstitialAd.loadAd(AdRequest.Builder().build())
             }
         }
     }
@@ -120,9 +121,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }?.let { showFragment(it) }
 
         tabClickCnt++
-        if (tabClickCnt == SHOW_AD_TAB_CLICK_MAX_CNT) {
-            mPublisherInterstitialAd.show()
-            tabClickCnt = 0
+        if (tabClickCnt > SHOW_AD_TAB_CLICK_MAX_CNT) {
+            if (interstitialAd.isLoaded) {
+                interstitialAd.show()
+                tabClickCnt = 0
+            } else {
+                Log.d("TAG", "The interstitial wasn't loaded yet.")
+            }
         }
     }
 
