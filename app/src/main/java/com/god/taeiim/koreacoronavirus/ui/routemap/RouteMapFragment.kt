@@ -69,7 +69,7 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
     private fun RouteMapViewModel.setObserves() {
         errorFailGetConfirmationsData.observe(viewLifecycleOwner, Observer { failToGetData() })
         confirmations.observe(viewLifecycleOwner, Observer {
-            drawAllPolyLine()
+            if (::map.isInitialized) drawAllPolyLine()
         })
         currentSelectIndex.observe(viewLifecycleOwner, Observer {
             if (it == -1) setVisibleAllPolyLine() else setVisibleOnePolyLine(it)
