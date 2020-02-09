@@ -17,6 +17,8 @@
     <string name="statistics_subTitle6">조사 대상 유증상자 (국내)</string>
     <string name="statistics_subTitle7">격리 해제</string>
     <string name="statistics_subTitle8">검사중</string>
+    <string name="statistics_subTitle9">국내 완치자</string>
+    <string name="statistics_subTitle10">세계 완치자</string>
 
     <string name="counters_person">명</string>
     <string name="counters_country">개국</string>

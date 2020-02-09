@@ -32,6 +32,11 @@
         <item name="android:textColor">@color/darkRed</item>
     </style>
 
+    <style name="CountGreenBigTextViewStyle" parent="NotoSansTextViewStyle">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/darkGreen</item>
+    </style>
+
     <style name="smallTextViewStyle" parent="NotoSansTextViewStyle">
         <item name="android:textSize">14sp</item>
     </style>
