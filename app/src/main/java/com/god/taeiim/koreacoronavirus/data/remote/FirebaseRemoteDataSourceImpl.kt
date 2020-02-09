@@ -35,7 +35,7 @@ object FirebaseRemoteDataSourceImpl : FirebaseDataSource.RemoteDataSource {
         fail: (t: Throwable) -> Unit
     ) {
 
-        val confirmations = ArrayList<Confirmations.ConirmationInfo>()
+        val confirmations = ArrayList<Confirmations.ConfirmationInfo>()
         val myRef: DatabaseReference = database.root.child("confirmations-info")
 
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -44,7 +44,7 @@ object FirebaseRemoteDataSourceImpl : FirebaseDataSource.RemoteDataSource {
                 for (item in dataSnapshot.children) {
                     confirmations.add(
                         item.key?.toInt() ?: 0,
-                        item.getValue(Confirmations.ConirmationInfo::class.java)!!
+                        item.getValue(Confirmations.ConfirmationInfo::class.java)!!
                     )
                 }
                 success(Confirmations(confirmations))

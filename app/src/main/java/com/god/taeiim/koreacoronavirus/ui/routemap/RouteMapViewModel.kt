@@ -24,9 +24,9 @@ class RouteMapViewModel(
     fun getConfirmationsData() {
         firebaseRepository.getConfirmationsInfo(success = {
             _confirmations.value = it
-            it.confirmations?.mapIndexed { index, conirmationInfo -> conirmationInfo.id = index }
+            it.confirmations?.mapIndexed { index, confirmationInfo -> confirmationInfo.id = index }
 
-            val addAllSelectList = arrayListOf(Confirmations.ConirmationInfo(-1))
+            val addAllSelectList = arrayListOf(Confirmations.ConfirmationInfo(-1))
             addAllSelectList.addAll(it.confirmations as List)
             _confirmationsAddAllOption.value = Confirmations(addAllSelectList)
 
@@ -35,7 +35,7 @@ class RouteMapViewModel(
         })
     }
 
-    fun selectSearchConfirmation(confirmation: Confirmations.ConirmationInfo) {
+    fun selectSearchConfirmation(confirmation: Confirmations.ConfirmationInfo) {
         _confirmationsAddAllOption.value?.confirmations?.map { it.isSelected.set(false) }
         confirmation.isSelected.set(true)
         _currentSelectIndex.value = confirmation.id

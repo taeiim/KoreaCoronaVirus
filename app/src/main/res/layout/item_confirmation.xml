@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.god.taeiim.koreacoronavirus.api.model.Confirmations.ConirmationInfo" />
+            type="com.god.taeiim.koreacoronavirus.api.model.Confirmations.ConfirmationInfo" />
 
         <variable
             name="vm"

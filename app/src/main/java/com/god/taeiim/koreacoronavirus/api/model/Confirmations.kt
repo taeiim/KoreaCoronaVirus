@@ -3,9 +3,9 @@ package com.god.taeiim.koreacoronavirus.api.model
 import androidx.databinding.ObservableField
 
 data class Confirmations(
-    val confirmations: List<ConirmationInfo>
+    val confirmations: List<ConfirmationInfo>
 ) {
-    data class ConirmationInfo(
+    data class ConfirmationInfo(
         var id: Int? = 0,
         val age: Int? = 0,
         val confirmDate: String? = "",

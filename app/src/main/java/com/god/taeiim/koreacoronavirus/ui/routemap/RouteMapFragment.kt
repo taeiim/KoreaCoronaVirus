@@ -40,7 +40,7 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
     private lateinit var markerView: View
     private lateinit var markerIndexTv: TextView
 
-    lateinit var confirmationAdapter: ConfirmationRecyclerAdapter<Confirmations.ConirmationInfo, ItemConfirmationBinding>
+    lateinit var confirmationAdapter: ConfirmationRecyclerAdapter<Confirmations.ConfirmationInfo, ItemConfirmationBinding>
 
     private val vm: RouteMapViewModel by lazy {
         ViewModelProvider(this@RouteMapFragment, object : ViewModelProvider.Factory {
