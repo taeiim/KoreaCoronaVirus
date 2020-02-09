@@ -18,10 +18,10 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:paddingLeft="48dp"
-        android:paddingTop="60dp"
-        android:paddingRight="48dp"
-        android:paddingBottom="60dp">
+        android:paddingLeft="40dp"
+        android:paddingTop="40dp"
+        android:paddingRight="40dp"
+        android:paddingBottom="40dp">
 
 
         <LinearLayout
