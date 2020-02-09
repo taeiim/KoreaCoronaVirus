@@ -23,6 +23,9 @@
     <string name="counters_person">명</string>
     <string name="counters_country">개국</string>
 
+    <string name="korea_disease_btn_title">질병관리본부 바로가기</string>
+    <string name="korea_disease_url">http://ncov.mohw.go.kr/index_main.jsp</string>
+
     <string name="api_key">AIzaSyDHvpK7YjTjxyI4NL24RXTEHjdcIpkybvk</string>
     <string name="admob_app_id">ca-app-pub-5497763693278680~1827766346</string>
     <string name="front_ad_unit_id">ca-app-pub-5497763693278680/1234855506</string>
