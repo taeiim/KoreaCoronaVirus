@@ -14,7 +14,7 @@ import com.god.taeiim.koreacoronavirus.R
 import com.god.taeiim.koreacoronavirus.data.FirebaseRepositoryImpl
 import com.god.taeiim.koreacoronavirus.data.remote.FirebaseRemoteDataSourceImpl
 import com.god.taeiim.koreacoronavirus.databinding.FragmentCoronaStatisticsBinding
-import com.god.taeiim.myapplication.base.BaseFragment
+import com.god.taeiim.koreacoronavirus.base.BaseFragment
 import com.god.taeiim.myapplication.extensions.linkIntent
 
 class CoronaStatisticsFragment :

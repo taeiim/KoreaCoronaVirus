@@ -15,7 +15,7 @@ import com.god.taeiim.koreacoronavirus.data.remote.NaverRemoteDataSourceImpl
 import com.god.taeiim.koreacoronavirus.databinding.FragmentNewsBinding
 import com.god.taeiim.koreacoronavirus.databinding.ItemKeywordBinding
 import com.god.taeiim.koreacoronavirus.databinding.ItemNewsBinding
-import com.god.taeiim.myapplication.base.BaseFragment
+import com.god.taeiim.koreacoronavirus.base.BaseFragment
 import com.god.taeiim.koreacoronavirus.data.NaverRepositoryImpl
 
 class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news) {

@@ -12,7 +12,7 @@ import com.god.taeiim.koreacoronavirus.ui.diseasewebview.DiseaseControlWebViewFr
 import com.god.taeiim.koreacoronavirus.ui.routemap.RouteMapFragment
 import com.god.taeiim.koreacoronavirus.ui.news.NewsFragment
 import com.god.taeiim.koreacoronavirus.ui.statistics.CoronaStatisticsFragment
-import com.god.taeiim.myapplication.base.BaseActivity
+import com.god.taeiim.koreacoronavirus.base.BaseActivity
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd

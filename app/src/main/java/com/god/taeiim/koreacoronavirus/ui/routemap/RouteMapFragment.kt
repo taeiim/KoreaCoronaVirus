@@ -22,7 +22,7 @@ import com.god.taeiim.koreacoronavirus.data.FirebaseRepositoryImpl
 import com.god.taeiim.koreacoronavirus.data.remote.FirebaseRemoteDataSourceImpl
 import com.god.taeiim.koreacoronavirus.databinding.FragmentRouteMapBinding
 import com.god.taeiim.koreacoronavirus.databinding.ItemConfirmationBinding
-import com.god.taeiim.myapplication.base.BaseFragment
+import com.god.taeiim.koreacoronavirus.base.BaseFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

@@ -1,4 +1,4 @@
-package com.god.taeiim.myapplication.base
+package com.god.taeiim.koreacoronavirus.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

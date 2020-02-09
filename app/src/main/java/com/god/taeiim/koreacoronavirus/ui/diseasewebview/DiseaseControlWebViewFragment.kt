@@ -11,7 +11,7 @@ import com.god.taeiim.koreacoronavirus.R
 import com.god.taeiim.koreacoronavirus.data.FirebaseRepositoryImpl
 import com.god.taeiim.koreacoronavirus.data.remote.FirebaseRemoteDataSourceImpl
 import com.god.taeiim.koreacoronavirus.databinding.FragmentDiseaseWebviewBinding
-import com.god.taeiim.myapplication.base.BaseFragment
+import com.god.taeiim.koreacoronavirus.base.BaseFragment
 
 class DiseaseControlWebViewFragment :
     BaseFragment<FragmentDiseaseWebviewBinding>(R.layout.fragment_disease_webview) {
