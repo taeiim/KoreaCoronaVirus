@@ -73,7 +73,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news) {
 
     private fun updateNewsResults(news: List<SearchResultNews.Item>) {
         newsResultAdapter.updateItems(news)
-        binding.newsRecyclerView.scrollTo(0, 0)
+        binding.newsRecyclerView.scrollToPosition(0)
     }
 
     private fun failToGetNews() {
