@@ -168,8 +168,16 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
 
     private fun setVisibleOnePolyLine(showLineIndex: Int) {
         setInvisibleAllPolyLine()
-        paths.get(showLineIndex).isVisible = true
-        markersInMap.filter { it.index == showLineIndex }.map { it.marker.isVisible = true }
+        paths[showLineIndex].isVisible = true
+
+        var isFocusMap = false
+        markersInMap.filter { it.index == showLineIndex }.map {
+            it.marker.isVisible = true
+            if (!isFocusMap) {
+                moveMapLatLng(it.marker.position)
+                isFocusMap = true
+            }
+        }
     }
 
     private fun setVisibleAllPolyLine() {
@@ -180,6 +188,10 @@ class RouteMapFragment : BaseFragment<FragmentRouteMapBinding>(R.layout.fragment
     private fun setInvisibleAllPolyLine() {
         paths.map { it.isVisible = false }
         markersInMap.map { it.marker.isVisible = false }
+    }
+
+    private fun moveMapLatLng(latLng: LatLng) {
+        map.animateCamera(CameraUpdateFactory.newLatLng(latLng))
     }
 
     private fun moveMapBasicLatLngZoom() {
